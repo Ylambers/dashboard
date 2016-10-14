@@ -19,3 +19,6 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
 
 ```
+
+* Install FOSUserBundle 
+http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
