@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}{{ user }}{% endblock %}</title>
-    {#{% stylesheets#}
-        {#'css/bootstrap.css'#}
-    {#%}#}
-    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
-    {#{% endstylesheets %}#}
 
-    <link rel="stylesheet" href="{{ asset('framework/css/body.css') }}" />
+    {% stylesheets
+        'bundles/framework/css/bootstrap.css*' filter='cssrewrite'
+        'bundles/framework/css/admin/index.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
