@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}{{ user }}{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {#{% stylesheets#}
+        {#'css/bootstrap.css'#}
+    {#%}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+
+    <link rel="stylesheet" href="{{ asset('framework/css/body.css') }}" />
+
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
 {% block menu %}
     <ul>
         <li>
+            <a href="/user/electra">Electra</a>
             <a href="/logout">Logout</a>
         </li>
     </ul>
