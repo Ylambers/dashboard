@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}{{ user }}{% endblock %}</title>
+    <title>{% block title %}Admin panel{% endblock %}</title>
 
     {% stylesheets
-        'bundles/framework/css/bootstrap.css*' filter='cssrewrite'
-        'bundles/framework/css/admin/index.css'
+        'bundles/framework/css/bootstrap.css' filter='cssrewrite'
+        'bundles/css/admin/menu.css'
     %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -15,15 +15,26 @@
 </head>
 <body>
 {% block menu %}
-    <ul>
-        <li>
-            <a href="/user/electra">Electra</a>
-            <a href="/logout">Logout</a>
-        </li>
-    </ul>
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/user/electra">Electra</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+
+{% endblock %}
+
+
 {% block content %}{% endblock %}
 {% block javascripts %}{% endblock %}
 

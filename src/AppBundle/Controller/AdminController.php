@@ -50,9 +50,20 @@ class AdminController extends Controller
             $em->flush();
         }
 
+        $data = $this->getDoctrine()
+            ->getRepository('AppBundle:Electra')
+            ->findAll();
+
+
         return $this->render('admin/electra.html.twig',[
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'data' => $data
         ]);
+    }
+
+    public function editElectraAction()
+    {
+        
     }
 
 }
