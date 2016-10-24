@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Electra;
+use AppBundle\Entity\Category;
+use AppBundle\Entity\Item;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\ChoiceList\View\ChoiceListView;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,19 +26,14 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/user/electra", name="electra")
+     * @Route("/user/category", name="category")
      */
-    public function createElectraAction(Request $request)
+    public function createCategoryAction(Request $request)
     {
-        $electra = new Electra();
+        $cat = new Category();
 
-        $form = $this->createFormBuilder($electra)
-            ->add('title', TextType::class)
-            ->add('shortText', TextType::class)
-            ->add('text', TextType::class)
-            ->add('link', TextType::class)
-            ->add('active', CheckboxType::class)
-            ->add('imageId', TextType::class)
+        $form = $this->createFormBuilder($cat)
+            ->add('name', TextType::class)
             ->add('Submit', SubmitType::class)
             ->getForm();
 
@@ -50,20 +47,46 @@ class AdminController extends Controller
             $em->flush();
         }
 
-        $data = $this->getDoctrine()
-            ->getRepository('AppBundle:Electra')
+        $data = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Category')
             ->findAll();
 
-
-        return $this->render('admin/electra.html.twig',[
+        return $this->render('admin/category.html.twig', [
             'form' => $form->createView(),
             'data' => $data
         ]);
     }
 
-    public function editElectraAction()
+    /**
+     * @Route("/user/item", name="item")
+     */
+    public function createItemAction(Request $request)
     {
-        
-    }
+        $item = new Item();
 
+        $form = $this->createFormBuilder($item)
+//            ->add('category', ChoiceListView::class)
+            ->add('title', TextType::class)
+            ->add('shortText', TextType::class)
+            ->add('text', TextType::class)
+            ->add('link', TextType::class)
+            ->add('active', CheckboxType::class)
+            ->add('imageId', TextType::class)
+            ->add('Submit', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+        }
+
+        return $this->render('admin/item.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }
+

@@ -5,13 +5,19 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Electra
+ * Item
  *
- * @ORM\Table(name="electra")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ElectraRepository")
+ * @ORM\Table(name="item")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ItemRepository")
  */
-class Electra
+class Item
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="Item")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
     /**
      * @var int
      *
@@ -24,14 +30,14 @@ class Electra
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="Title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="shortText", type="string", length=255)
+     * @ORM\Column(name="shortText", type="text")
      */
     private $shortText;
 
@@ -79,7 +85,7 @@ class Electra
      *
      * @param string $title
      *
-     * @return Electra
+     * @return Item
      */
     public function setTitle($title)
     {
@@ -103,7 +109,7 @@ class Electra
      *
      * @param string $shortText
      *
-     * @return Electra
+     * @return Item
      */
     public function setShortText($shortText)
     {
@@ -127,7 +133,7 @@ class Electra
      *
      * @param string $text
      *
-     * @return Electra
+     * @return Item
      */
     public function setText($text)
     {
@@ -151,7 +157,7 @@ class Electra
      *
      * @param string $link
      *
-     * @return Electra
+     * @return Item
      */
     public function setLink($link)
     {
@@ -175,7 +181,7 @@ class Electra
      *
      * @param string $imageId
      *
-     * @return Electra
+     * @return Item
      */
     public function setImageId($imageId)
     {
@@ -199,7 +205,7 @@ class Electra
      *
      * @param boolean $active
      *
-     * @return Electra
+     * @return Item
      */
     public function setActive($active)
     {
@@ -217,5 +223,28 @@ class Electra
     {
         return $this->active;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Item
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}
