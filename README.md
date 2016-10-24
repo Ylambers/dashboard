@@ -129,18 +129,18 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
 
 ##Todo
 
-* User handeling / registratie / login/ logout / user levels
+* User handeling / registratie / login/ logout / user levels - Done!
 
 * Create/ read / EDIT/ Delete
 
-* Menu met, items voor het cms systeem die de user zelf toevoegt
+* Menu adding,  Easy content management
 
-* Blog
+* User Blog
 
-* Contact handeling 
+* Contact Handling 
 
-* Style
+* Admin style
 
-* Traffic control / grafieken met data, aantal request naar een bepaalde pagina
+* Traffic control / Graphs with data how populair a page is
 
-* Easy template adding/ gemakkelijk een template toevoegen
+* Easy template adding/
