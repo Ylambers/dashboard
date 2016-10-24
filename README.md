@@ -125,3 +125,22 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
                     cssrewrite: ~
             
 ```
+
+
+##Todo
+
+* User handeling / registratie / login/ logout / user levels
+
+* Create/ read / EDIT/ Delete
+
+* Menu met, items voor het cms systeem die de user zelf toevoegt
+
+* Blog
+
+* Contact handeling 
+
+* Style
+
+* Traffic control / grafieken met data, aantal request naar een bepaalde pagina
+
+* Easy template adding/ gemakkelijk een template toevoegen

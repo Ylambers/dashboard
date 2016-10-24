@@ -63,6 +63,7 @@ class AdminController extends Controller
     public function createItemAction(Request $request)
     {
         $item = new Item();
+        $cat =  new Category();
 
         $form = $this->createFormBuilder($item)
 //            ->add('category', ChoiceListView::class)
