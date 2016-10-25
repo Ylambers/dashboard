@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Item;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\ChoiceList\View\ChoiceListView;
@@ -63,10 +65,13 @@ class AdminController extends Controller
     public function createItemAction(Request $request)
     {
         $item = new Item();
-        $cat =  new Category();
-
         $form = $this->createFormBuilder($item)
-//            ->add('category', ChoiceListView::class)
+            ->add('category', EntityType::class, array(
+                'class' => 'AppBundle:Category',
+                'choice_label' => function ($category) {
+                    return $category->getName();
+                }
+            ))
             ->add('title', TextType::class)
             ->add('shortText', TextType::class)
             ->add('text', TextType::class)
@@ -85,7 +90,12 @@ class AdminController extends Controller
             $em->flush();
         }
 
+        $data = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Item')
+            ->findAll();
+
         return $this->render('admin/item.html.twig', [
+            'data' => $data,
             'form' => $form->createView()
         ]);
     }

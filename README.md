@@ -144,3 +144,5 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
 * Traffic control / Graphs with data how populair a page is
 
 * Easy template adding/
+
+* Cashe handeling
