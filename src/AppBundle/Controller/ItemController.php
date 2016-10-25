@@ -57,4 +57,18 @@ class ItemController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * Route("/user/item/{id}")
+     */
+    public function editItemAction($id)
+    {
+        $data = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Category')
+            ->findOneBy([
+               'id' => $id
+            ]);
+
+//        return $this->render('')
+    }
 }
