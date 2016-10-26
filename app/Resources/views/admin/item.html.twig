@@ -19,9 +19,9 @@
                     {{ item.shortText }} <br />
                     {{ item.text }} <br />
                     {{ item.link }} <br />
-                    {{ item.imageId }} <br />
+                    {{ item.active }} <br />
 
-                    {{ item.active }}
+                    <a href="/user/item/{{ item.id }}">Edit</a>
                 {% endfor %}
             </div>
         </div>

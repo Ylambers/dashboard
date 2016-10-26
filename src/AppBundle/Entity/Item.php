@@ -13,9 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Item
 {
-
-
-
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="Item")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")

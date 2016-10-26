@@ -59,16 +59,43 @@ class ItemController extends Controller
     }
 
     /**
-     * Route("/user/item/{id}")
+     * @Route("/user/item/{id}")
      */
-    public function editItemAction($id)
+    public function editItemAction($id, Request $request)
     {
-        $data = $this->getDoctrine()->getManager()
-            ->getRepository('AppBundle:Category')
-            ->findOneBy([
-               'id' => $id
-            ]);
+        $em = $this->getDoctrine()->getManager();
+        $new = $em->getRepository('AppBundle:Item')->findBy([
+            'id' => $id
+        ]);
 
-//        return $this->render('')
+        $form = $this->createFormBuilder($new)
+            ->add('category', EntityType::class, array(
+                'class' => 'AppBundle:Category',
+                'choice_label' => function ($category) {
+                    return $category->getName();
+                }
+            ))
+            ->add('title', TextType::class)
+            ->add('shortText', TextType::class)
+            ->add('text', TextType::class)
+            ->add('link', TextType::class)
+            ->add('active', CheckboxType::class)
+            ->add('imageId', TextType::class)
+            ->add('Submit', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()){
+            $data = $form->getData();
+            $em->persist($new);
+            $em->flush();
+
+            return new Route('/user');
+        }
+
+        return $this->render('admin/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
