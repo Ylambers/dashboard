@@ -5,6 +5,13 @@
     Install Assetic Bundle
     Add parameters to config.yml
 
+## Commands
+
+```
+    Database update
+    $ php bin/console doctrine:schema:update --force
+```
+
 ## To install this project first do 
 
 ```
@@ -144,8 +151,14 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
         locale: en
         image_directory: '%kernel.root_dir%/../web/uploads/images'
 ```
+* Use Bootstrap form style
 
-
+```
+    twig:
+        debug:            "%kernel.debug%"
+        strict_variables: "%kernel.debug%"
+        form_themes: ['bootstrap_3_layout.html.twig']
+```
 
 ##Todo
 
