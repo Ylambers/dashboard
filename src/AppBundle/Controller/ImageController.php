@@ -1,0 +1,69 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\Image;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class ImageController extends Controller
+{
+    /**
+     * @Route("/user/image/upload", name="image")
+     */
+    public function addImageAction(Request $request)
+    {
+        $image = new Image();
+        $form = $this->createFormBuilder($image)
+            ->add('name', TextType::class)
+            ->add('description', TextType::class)
+            ->add('image',  FileType::class, ['label' => 'add image'])
+            ->add('Submit', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $file = $image->getImage();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('image_directory'),
+                $fileName
+            );
+            $image->setImage($fileName);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+
+            return new Response('file uploaded!');
+        }
+
+        return $this->render('admin/image/upload.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/user/image/show", name="SHOW")
+     */
+    public function showImageAction()
+    {
+        $data = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Image')
+            ->findAll();
+
+        return $this->render('admin/image/show.html.twig',[
+            'data' => $data
+        ]);
+    }
+
+}

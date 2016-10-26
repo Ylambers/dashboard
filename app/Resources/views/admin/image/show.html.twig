@@ -1,0 +1,15 @@
+{% extends 'admin/index.html.twig' %}
+
+
+{% block body %}
+
+    <h1>Image</h1>
+
+    {% for image in data %}
+        {{ image.name }}
+
+        <img src="{{ asset('uploads/images/' ~ image.image) }}" width="100px" />
+
+    {% endfor %}
+
+{% endblock %}

@@ -3,6 +3,7 @@
 ## Fast install
     Install FOSUser Bundle
     Install Assetic Bundle
+    Add parameters to config.yml
 
 ## To install this project first do 
 
@@ -101,6 +102,9 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
                 db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
                 firewall_name: main
                 user_class: AppBundle\Entity\User
+                
+                
+                
 ```
 * app/config/routing.yml
 ```
@@ -113,11 +117,15 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
 ```
             composer
             composer require symfony/assetic-bundle
-
+```
+```
             #AppKernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+```            
+ * app/config/config.yml
             
-            #config
+```
+
             assetic:
                 debug:          '%kernel.debug%'
                 use_controller: '%kernel.debug%'
@@ -125,6 +133,16 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
                     cssrewrite: ~
             
 ```
+
+* Install image location
+
+```
+    # app/config/config.yml
+    parameters:
+        locale: en
+        image_directory: '%kernel.root_dir%/../web/uploads/images'
+```
+
 
 
 ##Todo
