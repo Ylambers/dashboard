@@ -13,11 +13,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $electra = $this->getDoctrine()
-            ->getRepository('AppBundle:Electra')
-            ->findBy([
-                'active' => 1
-            ]);
+        $electra = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Item')
+            ->findAll();
 
 
         return $this->render('default/index.html.twig', [
