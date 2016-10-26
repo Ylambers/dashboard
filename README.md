@@ -90,11 +90,13 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
                         logout:       true
                         anonymous:    true
             
-                access_control:
-                    - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-                    - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-                    - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-                    - { path: ^/admin/, role: ROLE_ADMIN }
+            access_control:
+                - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+                - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+                - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+                - { path: ^/admin/, role: ROLE_ADMIN }
+                - { path: ^/user, role: ROLE_ADMIN }
+                - { path: ^/user/, role: ROLE_ADMIN }
 ```
 * app/config/config.yml
 ```
