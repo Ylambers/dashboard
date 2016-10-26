@@ -66,4 +66,19 @@ class ImageController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/user/image/delete/{id}", name="delete")
+     */
+
+    public function deleteImageAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('AppBundle:Image');
+
+        $image = $repository->findOneBy(['id' => $id]);
+        $em->remove($image);
+        $em->flush();
+
+        return new Response('deleted');
+    }
 }
