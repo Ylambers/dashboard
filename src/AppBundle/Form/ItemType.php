@@ -29,7 +29,9 @@ class ItemType extends AbstractType
         ->add('shortText', TextType::class)
         ->add('text', TextType::class)
         ->add('link', TextType::class)
-        ->add('active', CheckboxType::class)
+        ->add('active', CheckboxType::class, [
+            'required' => false
+        ])
         ->add('imageId', TextType::class)
         ->add('Submit', SubmitType::class)
         ->getForm();

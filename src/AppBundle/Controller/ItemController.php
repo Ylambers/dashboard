@@ -54,17 +54,21 @@ class ItemController extends Controller
      */
     public function editItemAction($id, Request $request)
     {
-        $data = $this->getDoctrine()->getManager()
-            ->getRepository('AppBundle:Item')
-            ->findBy([
-                'id' => $id
-            ]);
+        $em = $this->getDoctrine()->getManager();
+        $item = $em->getRepository('AppBundle:Item')->find($id);
 
-        $form = $this->createForm(ItemType::class, $data);
+        $form = $this->createForm(ItemType::class, $item);
 
         if ($form->isValid() && $form->isSubmitted()){
-            return $this->redirect('/user');
+            $task = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+            return $this->redirect('/user/item');
         }
+
 
         return $this->render('admin/edit.html.twig', [
             'form' => $form->createView()
