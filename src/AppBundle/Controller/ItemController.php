@@ -57,12 +57,15 @@ class ItemController extends Controller
         $em = $this->getDoctrine()->getManager();
         $item = $em->getRepository('AppBundle:Item')->find($id);
 
+        if (!$item){
+            return $this->redirect('/user/item');
+        }
+
         $form = $this->createForm(ItemType::class, $item);
 
         if ($form->isValid() && $form->isSubmitted()){
             $task = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
 
