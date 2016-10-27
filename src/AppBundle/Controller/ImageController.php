@@ -37,6 +37,7 @@ class ImageController extends Controller
                 $this->getParameter('image_directory'),
                 $fileName
             );
+
             $image->setImage($fileName);
 
             $em = $this->getDoctrine()->getManager();

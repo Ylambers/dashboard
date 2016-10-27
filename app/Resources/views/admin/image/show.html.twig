@@ -3,25 +3,23 @@
 
 {% block body %}
     <div class="container">
-    <h1>Image</h1>
-
+        <div class="row">
     {% for image in data %}
-            <div class="row">
-                <div class="col-md-3">
-                    <h2>{{ image.name }}</h2>
-                </div>
-                <div class="col-md-3">
-                    <p>{{ image.description }}</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="{{ asset('uploads/images/' ~ image.image) }}" width="100px" />
-                </div>
+            <div class="col-md-3">
+                <h2>{{ image.name }}</h2>
+            </div>
+            <div class="col-md-3">
+                <p>{{ image.description }}</p>
+            </div>
+            <div class="col-md-3">
+                <img src="{{ asset('uploads/images/' ~ image.image) }}" width="100px" />
+            </div>
 
-                <div class="col-md-3">
-                    <a href="/user/image/delete/{{ image.id }}">Delete</a>
-                </div>
+            <div class="col-md-3">
+                <a href="/user/image/delete/{{ image.id }}">Delete</a>
             </div>
         </div>
-
     {% endfor %}
+    </div>
+
 {% endblock %}
