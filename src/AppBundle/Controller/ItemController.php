@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Item;
+use AppBundle\Form\ItemType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,36 +24,26 @@ class ItemController extends Controller
     public function createItemAction(Request $request)
     {
         $item = new Item();
-        $form = $this->createFormBuilder($item)
-            ->add('category', EntityType::class, array(
-                'class' => 'AppBundle:Category',
-                'choice_label' => function ($category) {
-                    return $category->getName();
-                }
-            ))
-            ->add('title', TextType::class)
-            ->add('shortText', TextType::class)
-            ->add('text', TextType::class)
-            ->add('link', TextType::class)
-            ->add('active', CheckboxType::class)
-            ->add('imageId', TextType::class)
-            ->add('Submit', SubmitType::class)
-            ->getForm();
+        $form = $this->createForm(ItemType::class, $item);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()){
+
             $data = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($data);
             $em->flush();
+
+            return $this->redirect('/user/item');
         }
 
         $data = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Item')
             ->findAll();
 
-        return $this->render('admin/item.html.twig', [
+        return $this->render('admin/item/item.html.twig', [
             'data' => $data,
             'form' => $form->createView()
         ]);
@@ -63,35 +54,16 @@ class ItemController extends Controller
      */
     public function editItemAction($id, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $new = $em->getRepository('AppBundle:Item')->findBy([
-            'id' => $id
-        ]);
+        $data = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Item')
+            ->findBy([
+                'id' => $id
+            ]);
 
-        $form = $this->createFormBuilder($new)
-            ->add('category', EntityType::class, array(
-                'class' => 'AppBundle:Category',
-                'choice_label' => function ($category) {
-                    return $category->getName();
-                }
-            ))
-            ->add('title', TextType::class)
-            ->add('shortText', TextType::class)
-            ->add('text', TextType::class)
-            ->add('link', TextType::class)
-            ->add('active', CheckboxType::class)
-            ->add('imageId', TextType::class)
-            ->add('Submit', SubmitType::class)
-            ->getForm();
-
-        $form->handleRequest($request);
+        $form = $this->createForm(ItemType::class, $data);
 
         if ($form->isValid() && $form->isSubmitted()){
-            $data = $form->getData();
-            $em->persist($new);
-            $em->flush();
-
-            return new Route('/user');
+            return $this->redirect('/user');
         }
 
         return $this->render('admin/edit.html.twig', [

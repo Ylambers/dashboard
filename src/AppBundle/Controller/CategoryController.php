@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Item;
+use AppBundle\Form\CategoryType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,10 +24,7 @@ class CategoryController extends Controller
     {
         $cat = new Category();
 
-        $form = $this->createFormBuilder($cat)
-            ->add('name', TextType::class)
-            ->add('Submit', SubmitType::class)
-            ->getForm();
+        $form = $this->createForm(CategoryType::class, $cat);
 
         $form->handleRequest($request);
 

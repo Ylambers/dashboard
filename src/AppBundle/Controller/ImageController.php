@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Image;
+use AppBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -19,12 +20,7 @@ class ImageController extends Controller
     public function addImageAction(Request $request)
     {
         $image = new Image();
-        $form = $this->createFormBuilder($image)
-            ->add('name', TextType::class)
-            ->add('description', TextType::class)
-            ->add('image',  FileType::class, ['label' => 'add image'])
-            ->add('Submit', SubmitType::class)
-            ->getForm();
+        $form = $this->createForm(ImageType::class, $image);
 
         $form->handleRequest($request);
 
@@ -44,7 +40,7 @@ class ImageController extends Controller
             $em->persist($form->getData());
             $em->flush();
 
-            return new Response('file uploaded!');
+            return $this->redirect('/user/image/show');
         }
 
         return $this->render('admin/image/upload.html.twig',[
@@ -70,7 +66,6 @@ class ImageController extends Controller
     /**
      * @Route("/user/image/delete/{id}", name="delete")
      */
-
     public function deleteImageAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -80,6 +75,6 @@ class ImageController extends Controller
         $em->remove($image);
         $em->flush();
 
-        return new Response('deleted');
+        return $this->redirect('/user/image/show');
     }
 }
