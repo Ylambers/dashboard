@@ -4,6 +4,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 /**
  * Item
  *
@@ -245,5 +249,21 @@ class Item
     public function getImage()
     {
         return $this->image;
+    }
+
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('title', new NotBlank());
+        $metadata->addPropertyConstraint('title', new Length(['min' => 3, 'max' => 255]));
+
+        $metadata->addPropertyConstraint('shortText', new NotBlank());
+        $metadata->addPropertyConstraint('shortText', new Length(['min' => 5]));
+
+        $metadata->addPropertyConstraint('text', new NotBlank());
+        $metadata->addPropertyConstraint('text', new Length(['min' => 5]));
+
+        $metadata->addPropertyConstraint('link', new NotBlank());
+        $metadata->addPropertyConstraint('link', new Length(['min' => 5]));
     }
 }

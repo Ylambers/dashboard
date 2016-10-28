@@ -38,7 +38,7 @@
     transition: 200ms;
 }
 
-#primary_nav_wrap ul li:hover
+#primary_nav_wrap ul li:hover, #primary_nav_wrap ul li a:hover
 {
     background:#000;
 }
