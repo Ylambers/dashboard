@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,10 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="Item")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="items")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Image", inversedBy="items")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $image;
 
     /**
      * @var int
@@ -31,7 +36,7 @@ class Item
     /**
      * @var string
      *
-     * @ORM\Column(name="Title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
@@ -57,16 +62,9 @@ class Item
     private $link;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="imageId", type="text")
-     */
-    private $imageId;
-
-    /**
      * @var bool
      *
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="active", type="boolean", nullable=true)
      */
     private $active;
 
@@ -178,30 +176,6 @@ class Item
     }
 
     /**
-     * Set imageId
-     *
-     * @param string $imageId
-     *
-     * @return Item
-     */
-    public function setImageId($imageId)
-    {
-        $this->imageId = $imageId;
-
-        return $this;
-    }
-
-    /**
-     * Get imageId
-     *
-     * @return string
-     */
-    public function getImageId()
-    {
-        return $this->imageId;
-    }
-
-    /**
      * Set active
      *
      * @param boolean $active
@@ -250,44 +224,23 @@ class Item
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="image")
-     */
-    private $image;
-
-    public function __construct()
-    {
-        $this->image = new ArrayCollection();
-    }
-
-
-    /**
-     * Add image
+     * Set image
      *
      * @param \AppBundle\Entity\Image $image
      *
      * @return Item
      */
-    public function addImage(\AppBundle\Entity\Image $image)
+    public function setImage(\AppBundle\Entity\Image $image = null)
     {
-        $this->image[] = $image;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Remove image
-     *
-     * @param \AppBundle\Entity\Image $image
-     */
-    public function removeImage(\AppBundle\Entity\Image $image)
-    {
-        $this->image->removeElement($image);
-    }
-
-    /**
      * Get image
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \AppBundle\Entity\Image
      */
     public function getImage()
     {

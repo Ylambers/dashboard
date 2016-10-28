@@ -32,7 +32,11 @@ class ItemType extends AbstractType
         ->add('active', CheckboxType::class, [
             'required' => false
         ])
-        ->add('imageId', TextType::class)
+        ->add('image', EntityType::class, array(
+            'class' => 'AppBundle:Image',
+            'choice_label' => function ($image) {
+                return $image->getName();
+        }))
         ->add('Submit', SubmitType::class)
         ->getForm();
     }

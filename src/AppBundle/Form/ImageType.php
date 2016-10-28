@@ -22,7 +22,7 @@ class ImageType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', TextType::class)
-            ->add('image',  FileType::class, ['label' => 'add image'])
+            ->add('image',  FileType::class, ['label' => 'Add image'])
             ->add('Submit', SubmitType::class)
             ->getForm();
     }

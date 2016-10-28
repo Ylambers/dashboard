@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Item;
 use AppBundle\Form\CategoryType;
+use AppBundle\Form\ItemType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -59,5 +60,35 @@ class CategoryController extends Controller
         $em->flush();
 
         return $this->redirect('/user/category');
+    }
+
+    /**
+     * @Route("/user/category/edit/{id}", name="edit_category")
+     */
+    public function editCategoryAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $item = $em->getRepository('AppBundle:Category')->find($id);
+
+        if (!$item){
+            return $this->redirect('/user/category');
+        }
+
+        $form = $this->createForm(CategoryType::class, $item);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect('/user/category');
+        }
+
+        return $this->render('admin/category/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
