@@ -6,14 +6,10 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Item;
 use AppBundle\Form\ItemType;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\ChoiceList\View\ChoiceListView;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ItemController extends Controller
 {
@@ -50,7 +46,7 @@ class ItemController extends Controller
     }
 
     /**
-     * @Route("/user/item/{id}")
+     * @Route("/user/item/edit/{id}")
      */
     public function editItemAction($id, Request $request)
     {
@@ -62,11 +58,13 @@ class ItemController extends Controller
         }
 
         $form = $this->createForm(ItemType::class, $item);
+        $form->handleRequest($request);
 
-        if ($form->isValid() && $form->isSubmitted()){
-            $task = $form->getData();
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
 
-            $em->persist($task);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
             $em->flush();
 
             return $this->redirect('/user/item');
@@ -78,7 +76,7 @@ class ItemController extends Controller
     }
 
     /**
-     * @Route("/user/item/delete/{id}", name="delete")
+     * @Route("/user/item/delete/{id}", name="delete_item")
      */
     public function deleteImageAction($id)
     {

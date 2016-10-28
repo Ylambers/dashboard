@@ -40,9 +40,24 @@ class CategoryController extends Controller
             ->getRepository('AppBundle:Category')
             ->findAll();
 
-        return $this->render('admin/category.html.twig', [
+        return $this->render('admin/category/category.html.twig', [
             'form' => $form->createView(),
             'data' => $data
         ]);
+    }
+
+    /**
+     * @Route("/user/category/delete/{id}", name="delete_category")
+     */
+    public function deleteCategoryAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('AppBundle:Category');
+
+        $item = $repository->findOneBy(['id' => $id]);
+        $em->remove($item);
+        $em->flush();
+
+        return $this->redirect('/user/category');
     }
 }

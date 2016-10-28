@@ -11,9 +11,11 @@
                 {{ form_end(form) }}
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 scroll-container">
                 {% for content in data %}
-                    <h3>{{ content.name }}</h3><br />
+                    <h3>{{ content.name }}</h3>
+                    <a class="btn btn-default" href="/user/category//{{ content.id }}" role="button">Edit</a>
+                    <a class="btn btn-danger" href="/user/category/delete/{{ content.id }}" role="button">Delete</a>
                     <hr />
                 {% endfor %}
             </div>

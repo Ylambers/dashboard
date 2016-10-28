@@ -64,7 +64,7 @@ class ImageController extends Controller
     }
 
     /**
-     * @Route("/user/image/delete/{id}", name="delete")
+     * @Route("/user/image/delete/{id}", name="delete_image")
      */
     public function deleteImageAction($id)
     {
