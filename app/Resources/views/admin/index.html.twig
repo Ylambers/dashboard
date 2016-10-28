@@ -16,26 +16,26 @@
 <body>
 {% block menu %}
     <div class="menu">
-        <ul>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/user/item">Item</a>
-            </li>
-            <li>
-                <a href="/user/category">Category</a>
-            </li>
-            <li>
-                <a href="/user/image/upload">Upload image</a>
-            </li>
-            <li>
-                <a href="/user/image/show">Show image</a>
-            </li>
-            <li>
-                <a href="/logout">Logout</a>
-            </li>
-        </ul>
+        <nav id="primary_nav_wrap">
+            <ul>
+                <li class="current-menu-item"><a href="/">Home</a></li>
+                <li><a href="#">Image</a>
+                    <ul>
+                       <li><a href="/user/image/upload">Upload image</a></li>
+                        <a href="/user/image/show">Show image</a>
+                    </ul>
+                </li>
+                <li><a href="#">Content edit</a>
+                    <ul>
+                        <a href="/user/item">Item</a>
+                        <a href="/user/category">Category</a>
+                    </ul>
+                </li>
+
+                <li><a href="/logout">Logout</a></li>
+
+            </ul>
+        </nav>
     </div>
 {% endblock %}
 

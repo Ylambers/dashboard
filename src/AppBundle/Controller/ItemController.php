@@ -72,8 +72,7 @@ class ItemController extends Controller
             return $this->redirect('/user/item');
         }
 
-
-        return $this->render('admin/edit.html.twig', [
+        return $this->render('admin/item/edit.html.twig', [
             'form' => $form->createView()
         ]);
     }
