@@ -76,4 +76,19 @@ class ItemController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/user/item/delete/{id}", name="delete")
+     */
+    public function deleteImageAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('AppBundle:Item');
+
+        $image = $repository->findOneBy(['id' => $id]);
+        $em->remove($image);
+        $em->flush();
+
+        return $this->redirect('/user/item');
+    }
 }

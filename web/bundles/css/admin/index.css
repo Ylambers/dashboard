@@ -1,0 +1,7 @@
+.scroll-container{
+    background: #f7f7f7;
+    padding: 10px;
+    height: auto;
+    max-height: 800px;
+    overflow: auto;
+}

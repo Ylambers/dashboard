@@ -11,7 +11,7 @@
                 {{ form_end(form) }}
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 scroll-container">
                 {% for item in data %}
                     <h2>{{ item.category.name }}</h2>
                     <hr />
@@ -21,7 +21,8 @@
                     {{ item.link }} <br />
                     {{ item.active }} <br />
 
-                    <a href="/user/item/{{ item.id }}">Edit</a>
+                    <a class="btn btn-default" href="/user/item/{{ item.id }}" role="button">Edit</a>
+                    <a class="btn btn-danger" href="/user/item/delete/{{ item.id }}" role="button">Delete</a>
                 {% endfor %}
             </div>
         </div>
