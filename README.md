@@ -179,3 +179,5 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
 * Easy template adding/
 
 * Cashe handeling
+
+* Image encode to base64
