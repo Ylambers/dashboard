@@ -70,7 +70,12 @@ class ItemController extends Controller
             return $this->redirect('/user/item');
         }
 
+        $data = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Item')
+            ->findAll();
+
         return $this->render('admin/item/edit.html.twig', [
+            'data' => $data,
             'form' => $form->createView()
         ]);
     }

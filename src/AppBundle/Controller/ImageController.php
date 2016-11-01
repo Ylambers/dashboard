@@ -50,7 +50,7 @@ class ImageController extends Controller
 
 
     /**
-     * @Route("/user/image/show", name="SHOW")
+     * @Route("/user/image/show", name="show")
      */
     public function showImageAction()
     {
