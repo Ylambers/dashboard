@@ -1,0 +1,34 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Slider</h1>
+
+    <div class="col-md-6">
+        <h1>Item</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <div class="col-md-6 scroll-container">
+        {% for slider in data %}
+            <h2>{{ slider.title }}</h2>
+            <hr />
+            {{ slider.smallDescription }} <br />
+            {{ slider.description }}<br />
+            {{ slider.date }} <br />
+            {{ slider.link }} <br />
+            <img src="{{ asset('uploads/images/' ~ slider.image.image) }}" width="100px" /> <br /> <br />
+
+
+            <a class="btn btn-default" href="/user/slider/edit/{{ slider.id }}" role="button">Edit</a>
+            <a class="btn btn-danger" href="/user/slider/delete/{{ slider.id }}" role="button">Delete</a>
+
+
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

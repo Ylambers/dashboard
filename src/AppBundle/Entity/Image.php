@@ -34,10 +34,19 @@ class Image
      */
     private $item;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Slider", mappedBy="image")
+     */
+
+    private $slider;
+
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->slider = new ArrayCollection();
     }
+
 
     /**
      * @var string
@@ -177,6 +186,8 @@ class Image
         return $this->item;
     }
 
+
+
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('name', new Length(['min' => 3, 'max' => 255]));
@@ -188,5 +199,39 @@ class Image
 //                'image/jpg',
 //            ],
         ]));
+    }
+
+    /**
+     * Add slider
+     *
+     * @param \AppBundle\Entity\Slider $slider
+     *
+     * @return Image
+     */
+    public function addSlider(\AppBundle\Entity\Slider $slider)
+    {
+        $this->slider[] = $slider;
+
+        return $this;
+    }
+
+    /**
+     * Remove slider
+     *
+     * @param \AppBundle\Entity\Slider $slider
+     */
+    public function removeSlider(\AppBundle\Entity\Slider $slider)
+    {
+        $this->slider->removeElement($slider);
+    }
+
+    /**
+     * Get slider
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSlider()
+    {
+        return $this->slider;
     }
 }
