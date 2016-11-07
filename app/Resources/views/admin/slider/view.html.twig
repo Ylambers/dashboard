@@ -2,10 +2,9 @@
 
 {% block content %}
     <div class="container">
-        <h1>Slider</h1>
 
     <div class="col-md-6">
-        <h1>Item</h1>
+        <h1>Slider</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
@@ -18,7 +17,6 @@
             {{ slider.smallDescription }} <br />
             {{ slider.description }}<br />
             {{ slider.date }} <br />
-            {{ slider.link }} <br />
             <img src="{{ asset('uploads/images/' ~ slider.image.image) }}" width="100px" /> <br /> <br />
 
 
