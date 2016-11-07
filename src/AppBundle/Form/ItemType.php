@@ -12,6 +12,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -27,7 +28,7 @@ class ItemType extends AbstractType
         }))
         ->add('title', TextType::class)
         ->add('shortText', TextType::class)
-        ->add('text', TextType::class)
+        ->add('text', TextareaType::class)
         ->add('link', TextType::class)
         ->add('active', CheckboxType::class, [
             'required' => false

@@ -54,6 +54,22 @@
     'bundles/js/admin/index.js'
     %}
     <script src="{{ asset_url }}"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
+    {#<script>tinymce.init({ selector:'textarea' });</script>#}
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            theme: 'modern',
+            height: 300,
+            plugins: [
+
+            ],
+            toolbar: ' styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |'
+        });
+    </script>
+
     {% endjavascripts %}
 {% endblock %}
 
