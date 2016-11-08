@@ -28,7 +28,9 @@ class ItemType extends AbstractType
         }))
         ->add('title', TextType::class)
         ->add('shortText', TextType::class)
-        ->add('text', TextareaType::class)
+        ->add('text', TextareaType::class, [
+            'required' => false
+        ])
         ->add('link', TextType::class)
         ->add('active', CheckboxType::class, [
             'required' => false

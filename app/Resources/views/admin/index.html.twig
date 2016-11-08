@@ -56,17 +56,20 @@
     <script src="{{ asset_url }}"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
-    {#<script>tinymce.init({ selector:'textarea' });</script>#}
-
     <script type="text/javascript">
         tinymce.init({
             selector: 'textarea',
             theme: 'modern',
-            height: 300,
+            height: 250,
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            },
             plugins: [
 
             ],
-            toolbar: ' styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |'
+            toolbar: ' bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |'
         });
     </script>
 
