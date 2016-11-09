@@ -62,7 +62,10 @@
         editor.settings.entity_encoding = 'raw';
     }
 </script>
-{{ tinymce_init() }}
-
+{{ tinymce_init({
+    theme: {'simple':{'language': app.request.locale, 'height': 300 }},
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    autosave_ask_before_unload: false})
+}}
 </body>
 </html>
