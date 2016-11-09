@@ -21,7 +21,10 @@
                     {{ item.text|raw }} <br />
                     {{ item.link }} <br />
                     {{ item.active }} <br />
-                    <img src="{{ asset('uploads/images/' ~ item.image.image) }}" width="300px" />
+
+                    {% if item.image.image is not empty %}
+                        <img src="{{ asset('uploads/images/' ~ item.image.image) }}" width="100px" />
+                    {% endif %}
 
                     <br />
                     <br />

@@ -13,22 +13,26 @@
             </div>
 
             <div class="col-md-6 scroll-container">
-                {% for item in data %}
-                    <h2>{{ item.category.name }}</h2>
-                    <hr />
-                    {{ item.Title }} <br />
-                    {{ item.shortText }} <br />
-                    {{ item.text }} <br />
-                    {{ item.link }} <br />
-                    {{ item.active }} <br />
-                    <img src="{{ asset('uploads/images/' ~ item.image.image) }}" width="100px" />
+                {% autoescape %}
+                    {% for item in data %}
+                        <h2>{{ item.category.name }}</h2>
+                        <hr />
+                        {{ item.Title }} <br />
+                        {{ item.shortText }} <br />
+                        {{ item.text|raw }} <br />
+                        {{ item.link }} <br />
+                        {{ item.active }} <br />
 
-                    <br />
-                    <br />
+                        {% if item.image.image is not empty %}
+                            <img src="{{ asset('uploads/images/' ~ item.image.image) }}" width="100px" />
+                        {% endif %}
+                        <br />
+                        <br />
 
-                    <a class="btn btn-default" href="/user/item/edit/{{ item.id }}" role="button">Edit</a>
-                    <a class="btn btn-danger" href="/user/item/delete/{{ item.id }}" role="button">Delete</a>
-                {% endfor %}
+                        <a class="btn btn-default" href="/user/item/edit/{{ item.id }}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="/user/item/delete/{{ item.id }}" role="button">Delete</a>
+                    {% endfor %}
+                {% endautoescape %}
             </div>
         </div>
     </div>

@@ -21,28 +21,27 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('category', EntityType::class, array(
-        'class' => 'AppBundle:Category',
-        'choice_label' => function ($category) {
-            return $category->getName();
-        }))
+        ->add('category', EntityType::class, [
+            'class' => 'AppBundle:Category',
+            'choice_label' => function ($category) {
+                return $category->getName();
+        }])
         ->add('title', TextType::class)
         ->add('shortText', TextType::class)
         ->add('text', TextareaType::class, [
             'attr' => [
                 'class' => 'tinymce',
-                'data-theme' => 'bbcode'
             ]
         ])
         ->add('link', TextType::class)
         ->add('active', CheckboxType::class, [
             'required' => false
         ])
-        ->add('image', EntityType::class, array(
+        ->add('image', EntityType::class, [
             'class' => 'AppBundle:Image',
             'choice_label' => function ($image) {
                 return $image->getName();
-        }))
+        }])
         ->add('Submit', SubmitType::class)
         ->getForm();
     }

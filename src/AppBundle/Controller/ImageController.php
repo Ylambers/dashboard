@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Image;
 use AppBundle\Form\ImageType;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,9 +21,13 @@ class ImageController extends Controller
     public function addImageAction(Request $request)
     {
         $image = new Image();
+
+
         $form = $this->createForm(ImageType::class, $image);
 
         $form->handleRequest($request);
+
+
 
         if ($form->isSubmitted() && $form->isValid()){
             $file = $image->getImage();
