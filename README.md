@@ -3,7 +3,18 @@
 ## Fast install
     Install FOSUser Bundle
     Install Assetic Bundle
+    Install TinymceBundle
     Add parameters to config.yml
+
+## Links
+   * FosUserBundle
+    http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
+    
+   * Assetic Bundle
+    http://symfony.com/doc/current/assetic/asset_management.html
+
+   * TinymceBundle
+    https://github.com/stfalcon/TinymceBundle
 
 ## Commands
 
@@ -34,8 +45,8 @@ parameters:
 
 ```
 
-* Install FOSUserBundle 
-http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
+## Install FOSUserBundle 
+* http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
 
 ```
             composer require friendsofsymfony/user-bundle "~2.0@dev"
@@ -121,8 +132,9 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
                 resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 ```
 
-* Install the assets bundle http://symfony.com/doc/current/assetic/asset_management.html
+## Install the assets bundle 
 
+* http://symfony.com/doc/current/assetic/asset_management.html
 ```
             composer
             composer require symfony/assetic-bundle
@@ -159,6 +171,27 @@ http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
         strict_variables: "%kernel.debug%"
         form_themes: ['bootstrap_3_layout.html.twig']
 ```
+
+
+## Install tinymceBundle
+
+https://github.com/stfalcon/TinymceBundle
+
+            ```
+            //app/AppKernel.php
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            
+            ```
+* $ php app/console assets:install web/
+* Add tinymce to a form 
+    ```
+        $builder->add('introtext', 'textarea', array(
+            'attr' => array(
+                'class' => 'tinymce',
+                'data-theme' => 'bbcode' // Skip it if you want to use default theme
+            )
+        ));
+    ```
 
 ##Todo
 

@@ -23,7 +23,7 @@
                 <li><a href="#">Image</a>
                     <ul>
                        <li><a href="/user/image/upload">Upload image</a></li>
-                        <a href="/user/image/show">Show image</a>
+                        <a href="/user/image/show">Image view</a>
                     </ul>
                 </li>
                 <li><a href="#">Content</a>
@@ -54,27 +54,15 @@
     'bundles/js/admin/index.js'
     %}
     <script src="{{ asset_url }}"></script>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-
-    <script type="text/javascript">
-        tinymce.init({
-            selector: 'textarea',
-            theme: 'modern',
-            height: 250,
-            setup: function (editor) {
-                editor.on('change', function () {
-                    editor.save();
-                });
-            },
-            plugins: [
-
-            ],
-            toolbar: ' bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |'
-        });
-    </script>
-
     {% endjavascripts %}
 {% endblock %}
+
+<script>
+    function callback_tinymce_init(editor) {
+        editor.settings.entity_encoding = 'raw';
+    }
+</script>
+{{ tinymce_init() }}
 
 </body>
 </html>

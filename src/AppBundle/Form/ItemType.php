@@ -29,7 +29,10 @@ class ItemType extends AbstractType
         ->add('title', TextType::class)
         ->add('shortText', TextType::class)
         ->add('text', TextareaType::class, [
-//            'required' => false,
+            'attr' => [
+                'class' => 'tinymce',
+                'data-theme' => 'bbcode'
+            ]
         ])
         ->add('link', TextType::class)
         ->add('active', CheckboxType::class, [
