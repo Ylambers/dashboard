@@ -34,13 +34,30 @@ class UserController extends Controller
     /**
      * @Route("user/fos/show", name="showUser")
      */
-    public function showUsers()
+    public function showUsersAction()
     {
         $user = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:User')
             ->findAll();
 
         return $this->render('admin/user/show.html.twig',[
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * @Route("user/fos/edit/{id}", name="editUser")
+     */
+    public function editUserAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:Item')->find($id);
+
+//        if (!$user){
+//            return $this->redirect('/user/fos/show');
+//        }
+
+        return $this->render('admin/user/edit.html.twig',[
             'user' => $user
         ]);
     }
