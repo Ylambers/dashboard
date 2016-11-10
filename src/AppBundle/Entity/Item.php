@@ -254,16 +254,12 @@ class Item
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('title', new NotBlank());
         $metadata->addPropertyConstraint('title', new Length(['min' => 3, 'max' => 255]));
 
-        $metadata->addPropertyConstraint('shortText', new NotBlank());
         $metadata->addPropertyConstraint('shortText', new Length(['min' => 5]));
 
-        $metadata->addPropertyConstraint('text', new NotBlank());
         $metadata->addPropertyConstraint('text', new Length(['min' => 5]));
 
-        $metadata->addPropertyConstraint('link', new NotBlank());
         $metadata->addPropertyConstraint('link', new Length(['min' => 5]));
     }
 }
