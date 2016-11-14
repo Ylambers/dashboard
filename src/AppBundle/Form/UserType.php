@@ -27,6 +27,15 @@ class UserType extends AbstractType
             ->add('username', TextType::class,[
             ])
             ->add('email', TextType::class,[])
+
+            ->add(
+                'roles', ChoiceType::class, [
+                    'choices' => ['User' => 'ROLE_USER', 'Admin' => 'ROLE_ADMIN', 'Super admin' => 'ROLE_SUPER_ADMIN'],
+                    'expanded' => true,
+                    'multiple' => true,
+                ]
+            )
+
             ->add('enabled', CheckboxType::class, [
                 'required' => false
             ])
