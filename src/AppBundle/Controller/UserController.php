@@ -11,27 +11,27 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-    /**
-     * @Route("/user/fos/createUser", name="createUser")
-     */
-    public function createUserAction()
-    {
-        $user = new User();
-        $user->setEmail("adminl@gmail.com") ;
-        $user->setUsername("mitke") ;
-        $user->setPlainPassword("123123123") ;
-        $user->setEnabled(true) ;
-        $user->setSuperAdmin(true) ;
-
-
-        $this->get('fos_user.user_manager')->updateUser($user, false);
-
-
-        $this->getDoctrine()->getManager()->flush();
-
-        return new Response('fixed');
-
-    }
+//    /**
+//     * @Route("/user/fos/createUser", name="createUser")
+//     */
+//    public function createUserAction()
+//    {
+//        $user = new User();
+//        $user->setEmail("adminl@gmail.com") ;
+//        $user->setUsername("mitke") ;
+//        $user->setPlainPassword("123123123") ;
+//        $user->setEnabled(true) ;
+//        $user->setSuperAdmin(true) ;
+//
+//
+//        $this->get('fos_user.user_manager')->updateUser($user, false);
+//
+//
+//        $this->getDoctrine()->getManager()->flush();
+//
+//        return new Response('fixed');
+//
+//    }
 
     /**
      * @Route("user/fos/show", name="showUser")
@@ -75,5 +75,17 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView()
         ]);
+    }
+
+
+    /**
+     *@Route("/user/fos/create", name="Createuser")
+     *
+     */
+    public function createUserAction()
+    {
+        $user = new User();
+
+
     }
 }
