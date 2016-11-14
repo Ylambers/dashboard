@@ -25,7 +25,7 @@
                             <td>Non active</td>
                         {% endif %}
                         <td>{{ item.lastLogin|date("d/m/Y:H:I:s") }}</td>
-                        <td>{{ item.roles|join }}</td>
+                        <td>{{ item.roles|join(', ') }}</td>
                         <td>
                             <a class="btn btn-default" href="/user/fos/edit/{{ item.id }}" role="button">Edit</a>
                         </td>
