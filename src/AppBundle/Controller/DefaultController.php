@@ -14,8 +14,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-//        $data = $this->getDoctrine()->getManager()
-//            ->getRepository('AppBundle:Item')
-
+        return $this->redirect('/user');
     }
 }

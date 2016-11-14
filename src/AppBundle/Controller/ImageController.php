@@ -82,4 +82,5 @@ class ImageController extends Controller
 
         return $this->redirect('/user/image/show');
     }
+
 }

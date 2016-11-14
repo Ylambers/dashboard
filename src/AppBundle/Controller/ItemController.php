@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Image;
 use AppBundle\Entity\Item;
 use AppBundle\Form\ItemType;
 use Doctrine\ORM\EntityRepository;
