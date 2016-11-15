@@ -83,4 +83,41 @@ class ImageController extends Controller
         return $this->redirect('/user/image/show');
     }
 
+    /**
+     * @Route("/user/image/edit/{id}", name="edit_image")
+     */
+    public function editImageAction($id, Request $request)
+    {
+        //TODO fix edit page
+
+        $em = $this->getDoctrine()->getManager();
+        $image = $em->getRepository('AppBundle:Image')->find($id);
+
+        if (!$image){
+            return $this->redirect('/user/image');
+        }
+
+        $form = $this->createFormBuilder($image)
+            ->add('name', TextType::class)
+            ->add('description', TextType::class)
+//            ->add('image', TextType::class)
+            ->add('submit', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect('/user/image');
+        }
+
+        return $this->render('admin/image/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }
