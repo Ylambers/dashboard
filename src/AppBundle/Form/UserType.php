@@ -26,6 +26,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('enabled', CheckboxType::class, [
+                'required' => false
+            ])
             ->add('username', TextType::class,[
             ])
             ->add('email', TextType::class,[])
@@ -36,6 +39,7 @@ class UserType extends AbstractType
                 'first_options' => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat password'),
                 'invalid_message' => 'fos_user.password.mismatch',
+                'required' => false
             ))
 
             ->add(
@@ -45,10 +49,6 @@ class UserType extends AbstractType
                     'multiple' => true,
                 ]
             )
-
-            ->add('enabled', CheckboxType::class, [
-                'required' => false
-            ])
             ->add('Submit', SubmitType::class)
             ->getForm();
     }
