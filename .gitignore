@@ -14,5 +14,13 @@
 !var/SymfonyRequirements.php
 /vendor/
 /app/AppKernel.php
-/app/config/
+/app/config/config.yml
+/app/config/config_dev.yml
+/app/config/config_prod.yml
+/app/config/config_test.yml
+/app/config/parameters.yml
+/app/config/parameters.yml.dist
+/app/config/security.yml
+/app/config/services.yml
+
 .idea/

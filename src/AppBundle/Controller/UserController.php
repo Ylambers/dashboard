@@ -75,12 +75,20 @@ class UserController extends Controller
 
             return $this->redirect('/user/fos/show');
         }
+        
         return $this->render('admin/user/edit.html.twig',[
             'user' => $user,
             'form' => $form->createView()
         ]);
     }
 
+    /**
+     * @Route("user/fos/register", name="registration")
+     */
+    public function registerUserAction()
+    {
+        return $this->render('admin/user/registrationUser.html.twig',[]);
+    }
 
     /**
      *@Route("/user/fos/create", name="Createuser")
