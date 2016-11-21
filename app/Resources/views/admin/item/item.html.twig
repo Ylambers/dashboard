@@ -21,8 +21,11 @@
                         {{ item.shortText }} <br />
                         {{ item.text|raw }} <br />
                         {{ item.link }} <br />
-                        {{ item.active }} <br />
-
+                        {% if item.active is null %}
+                            <strong>Not active</strong> <br />
+                        {% else %}
+                            <strong>Active</strong> <br />
+                        {% endif %}
                         {% if item.image.image is not empty %}
                             <img src="{{ asset('uploads/images/' ~ item.image.image) }}" width="100px" />
                         {% endif %}

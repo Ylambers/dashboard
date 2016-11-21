@@ -11,7 +11,9 @@
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-
+    {#CDN LIBARAYS#}
+        <link href="//cdn.rawgit.com/noelboss/featherlight/1.6.1/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+    {#END CDN#}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
@@ -35,11 +37,11 @@
                 </li>
 
                 <li>
-                    <a href="/user/profile">Users</a>
+                    <a href="#">Users</a>
                     <ul>
                         <a href="/user/fos/create">Create user</a>
 
-                        <a href="/user/fos/show">Show user</a>
+                        <a href="/user/fos/show">Show users</a>
                     </ul>
                 </li>
                 <li><a href="/logout">Logout</a></li>
@@ -62,6 +64,10 @@
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+    {#CDN LIBARAYS#}
+        <script src="//cdn.rawgit.com/noelboss/featherlight/1.6.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    {#END CDN#}
 {% endblock %}
 
 <script>

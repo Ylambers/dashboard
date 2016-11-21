@@ -9,7 +9,7 @@
                     <div class="img-grid-hover">
                         <h2>{{ image.name }}</h2><br />
                         <p>{{ image.description }}</p> <br />
-                        <a class="btn btn-default" id="img-grid-full-width" href="#" role="button">View Image</a>
+                        <a href="#" class="btn btn-default" data-featherlight="{{ asset('uploads/images/' ~ image.image) }}">View image</a>
                         <a class="btn btn-primary" href="/user/image/edit/{{ image.id }}" role="button">Edit image</a>
                         <a class="btn btn-danger" href="/user/image/delete/{{ image.id }}" role="button">Delete</a>
 
