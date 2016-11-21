@@ -128,8 +128,24 @@ parameters:
 ```
 * app/config/routing.yml
 ```
-            fos_user:
-                resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /user/profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /user/fos/registration
+
+register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /registration
 ```
 
 ## Install the assets bundle 
