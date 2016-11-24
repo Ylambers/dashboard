@@ -230,3 +230,5 @@ https://github.com/stfalcon/TinymceBundle
 * Cashe handeling
 
 * Image encode to base64
+
+* User information table, connect to fos_users
