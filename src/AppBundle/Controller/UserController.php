@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Entity\UserProfile;
+use AppBundle\Form\UserProfileType;
 use AppBundle\Form\UserType;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
@@ -14,27 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-//    /**
-//     * @Route("/user/fos/createUser", name="createUser")
-//     */
-//    public function createUserAction()
-//    {
-//        $user = new User();
-//        $user->setEmail("adminl@gmail.com") ;
-//        $user->setUsername("mitke") ;
-//        $user->setPlainPassword("123123123") ;
-//        $user->setEnabled(true) ;
-//        $user->setSuperAdmin(true) ;
-//
-//
-//        $this->get('fos_user.user_manager')->updateUser($user, false);
-//
-//
-//        $this->getDoctrine()->getManager()->flush();
-//
-//        return new Response('fixed');
-//
-//    }
 
     /**
      * @Route("user/fos/show", name="showUser")
@@ -96,8 +77,35 @@ class UserController extends Controller
      */
     public function createUserAction()
     {
+        //TODO fix create user action
         $user = new User();
 
 
+    }
+
+    /**
+     * @Route("user/profile", name="profile")
+     */
+    public function userProfileAction(Request $request)
+    {
+//        $em = $this->getDoctrine()->getManager();
+//        $user = $em->getRepository('AppBundle:UserProfile')->find($this->getUser()->getId());
+
+
+        $form = $this->createForm(UserProfileType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $data->user = '1';
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect('/user');
+        }
+        return $this->render('admin/user/profile.html.twig',[
+            'form' => $form->createView()
+        ]);
     }
 }

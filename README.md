@@ -21,6 +21,8 @@
 ```
     Database update
     $ php bin/console doctrine:schema:update --force
+    $ php bin/console doctrine:generate:entities AppBundle
+
 ```
 
 ## To install this project first do 

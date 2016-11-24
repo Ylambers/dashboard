@@ -14,7 +14,6 @@
 {
     list-style:none;
     position:relative;
-    float:left;
     margin:0;
     padding:0
 }
@@ -42,6 +41,11 @@
 #primary_nav_wrap ul li:hover, #primary_nav_wrap ul li a:hover
 {
     background:#000;
+}
+
+#primary_nav_wrap ul li:last-child{
+
+    color: red;
 }
 
 #primary_nav_wrap ul ul
