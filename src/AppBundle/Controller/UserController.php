@@ -88,16 +88,25 @@ class UserController extends Controller
      */
     public function userProfileAction(Request $request)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $user = $em->getRepository('AppBundle:UserProfile')->find($this->getUser()->getId());
+        $userId = $this->getUser()->getId();
+        $em = $this->getDoctrine()->getManager();
 
+        $profile = $em->getRepository('AppBundle:UserProfile')
+            ->find($userId);
 
-        $form = $this->createForm(UserProfileType::class);
+        if (is_null($profile)){
+            $newProfile = new UserProfile();
+
+            $em->persist($newProfile);
+            $em->flush();
+        }
+
+        $form = $this->createForm(UserProfileType::class, $profile);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
-            $data->user = '1';
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($data);
             $em->flush();

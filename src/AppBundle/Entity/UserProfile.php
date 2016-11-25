@@ -16,7 +16,7 @@ class UserProfile
      * @ORM\ManyToOne(targetEntity="User", inversedBy="UserProfiles")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
+    private $userId;
 
     /**
      * @var int
@@ -205,7 +205,7 @@ class UserProfile
      */
     public function getEmailAddress()
     {
-        return $this->emaildAddress;
+        return $this->emailAddress;
     }
 
     /**
@@ -302,5 +302,29 @@ class UserProfile
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param \AppBundle\Entity\User $userId
+     *
+     * @return UserProfile
+     */
+    public function setUserId(\AppBundle\Entity\User $userId = null)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUserId()
+    {
+        return $this->userId;
     }
 }

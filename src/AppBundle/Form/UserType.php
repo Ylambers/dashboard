@@ -44,7 +44,7 @@ class UserType extends AbstractType
 
             ->add(
                 'roles', ChoiceType::class, [
-                    'choices' => ['User' => 'ROLE_USER', 'Admin' => 'ROLE_ADMIN', 'Super admin' => 'ROLE_SUPER_ADMIN'],
+                    'choices' => ['User' => 'ROLE_USER', 'Super admin' => 'ROLE_SUPER_ADMIN'],
                     'expanded' => true,
                     'multiple' => true,
                 ]
@@ -53,3 +53,5 @@ class UserType extends AbstractType
             ->getForm();
     }
 }
+
+//'Admin' => 'ROLE_ADMIN',
