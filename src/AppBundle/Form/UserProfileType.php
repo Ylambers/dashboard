@@ -49,6 +49,9 @@ class UserProfileType extends AbstractType
             ->add('address', TextType::class, [
                 'required' => false
             ])
+            ->add('zipcode', TextType::class, [
+                'required' => false
+            ])
             ->add('city', TextType::class,[
                 'required' => false
             ])

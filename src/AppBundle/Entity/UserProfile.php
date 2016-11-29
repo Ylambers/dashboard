@@ -79,6 +79,13 @@ class UserProfile
     /**
      * @var string
      *
+     * @ORM\Column(name="zipcode", type="string", length=255, nullable=true)
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     private $city;
@@ -338,5 +345,29 @@ class UserProfile
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set zipcode
+     *
+     * @param string $zipcode
+     *
+     * @return UserProfile
+     */
+    public function setZipcode($zipcode)
+    {
+        $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    /**
+     * Get zipcode
+     *
+     * @return string
+     */
+    public function getZipcode()
+    {
+        return $this->zipcode;
     }
 }

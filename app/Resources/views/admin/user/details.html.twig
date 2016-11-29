@@ -14,7 +14,8 @@
                 <th>Phone number</th>
                 <th>Mobile number</th>
                 <th>Address</th>
-                <th>city</th>
+                <th>Zipcode</th>
+                <th>City</th>
                 <th>Country</th>
             </tr>
             </thead>
@@ -27,13 +28,11 @@
                     <td>{{ user.phoneNumber }}</td>
                     <td>{{ user.mobileNumber }}</td>
                     <td>{{ user.address }}</td>
+                    <td>{{ user.zipCode }}</td>
                     <td>{{ user.city }}</td>
                     <td>{{ user.country }}</td>
                 </tr>
             </tbody>
         </table>
-
     </div>
-
-
 {% endblock %}

@@ -111,6 +111,7 @@ class UserController extends Controller
             $profile->setAddress(null);
             $profile->setCity(null);
             $profile->setCountry(null);
+            $profile->setZipcode(null);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($profile);
