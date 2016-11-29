@@ -42,9 +42,9 @@ class UserProfile
     private $lastName;
 
     /**
-     * @var string
+     * @var date
      *
-     * @ORM\Column(name="dateOfBirth", type="string", length=255, nullable=true)
+     * @ORM\Column(name="dateOfBirth", type="date", length=255, nullable=true)
      */
     private $dateOfBirth;
 

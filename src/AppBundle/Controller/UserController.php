@@ -128,7 +128,7 @@ class UserController extends Controller
                 $em->persist($data);
                 $em->flush();
 
-                return $this->redirect('/user');
+                return $this->redirect('/user/profile');
             }
         }
 
