@@ -14,17 +14,21 @@
                 <th>Phone number</th>
                 <th>Mobile number</th>
                 <th>Address</th>
+                <th>city</th>
+                <th>Country</th>
             </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>{{ user.firstName }}</td>
                     <td>{{ user.lastName }}</td>
-                    <td>{{ user.dateOfBirth|date("Y:m:d")}}</td>
+                    <td>{{ user.dateOfBirth|date("d:m:Y")}}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.phoneNumber }}</td>
                     <td>{{ user.mobileNumber }}</td>
                     <td>{{ user.address }}</td>
+                    <td>{{ user.city }}</td>
+                    <td>{{ user.country }}</td>
                 </tr>
             </tbody>
         </table>

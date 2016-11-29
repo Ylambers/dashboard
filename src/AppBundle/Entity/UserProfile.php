@@ -76,6 +76,19 @@ class UserProfile
      */
     private $address;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     */
+    private $country;
 
     /**
      * Get id
@@ -277,5 +290,53 @@ class UserProfile
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return UserProfile
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return UserProfile
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }

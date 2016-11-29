@@ -10,6 +10,7 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -46,6 +47,12 @@ class UserProfileType extends AbstractType
                 'required' => false
             ])
             ->add('address', TextType::class, [
+                'required' => false
+            ])
+            ->add('city', TextType::class,[
+                'required' => false
+            ])
+            ->add('country', CountryType::class,[
                 'required' => false
             ])
             ->add('Submit', SubmitType::class)

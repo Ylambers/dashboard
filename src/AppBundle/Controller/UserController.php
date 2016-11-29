@@ -109,6 +109,8 @@ class UserController extends Controller
             $profile->setPhoneNumber(null);
             $profile->setMobileNumber(null);
             $profile->setAddress(null);
+            $profile->setCity(null);
+            $profile->setCountry(null);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($profile);
