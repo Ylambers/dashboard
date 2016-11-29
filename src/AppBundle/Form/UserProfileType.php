@@ -19,18 +19,16 @@ class UserProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('user', EntityType::class, [
-                'class' => 'AppBundle:User',
-                'choice_label' => function ($user) {
-                    return $user->getId();
-            }])
             ->add('firstName', TextType::class, [
+                'required' => false
+            ])
+            ->add('lastName', TextType::class, [
                 'required' => false
             ])
             ->add('dateOfBirth', TextType::class, [
                 'required' => false
             ])
-            ->add('emailAddress', TextType::class, [
+            ->add('email', TextType::class, [
                 'required' => false
             ])
             ->add('phoneNumber', TextType::class, [

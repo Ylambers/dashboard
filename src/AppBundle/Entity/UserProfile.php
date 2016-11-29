@@ -13,10 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class UserProfile
 {
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="UserProfiles")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="user")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $userId;
+    private $user;
 
     /**
      * @var int
@@ -26,7 +26,6 @@ class UserProfile
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
 
     /**
      * @var string
@@ -52,13 +51,6 @@ class UserProfile
     /**
      * @var string
      *
-     * @ORM\Column(name="emailAddress", type="string", length=255, nullable=true)
-     */
-    private $emailAddress;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="phoneNumber", type="string", length=255, nullable=true)
      */
     private $phoneNumber;
@@ -69,6 +61,13 @@ class UserProfile
      * @ORM\Column(name="mobileNumber", type="string", length=255, nullable=true)
      */
     private $mobileNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
 
     /**
      * @var string
@@ -86,30 +85,6 @@ class UserProfile
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set siteName
-     *
-     * @param string $siteName
-     *
-     * @return UserProfile
-     */
-    public function setSiteName($siteName)
-    {
-        $this->siteName = $siteName;
-
-        return $this;
-    }
-
-    /**
-     * Get siteName
-     *
-     * @return string
-     */
-    public function getSiteName()
-    {
-        return $this->siteName;
     }
 
     /**
@@ -185,30 +160,6 @@ class UserProfile
     }
 
     /**
-     * Set emailAddress
-     *
-     * @param string $emailAddress
-     *
-     * @return UserProfile
-     */
-    public function setEmailAddress($emailAddress)
-    {
-        $this->emailAddress = $emailAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get emailAddress
-     *
-     * @return string
-     */
-    public function getEmailAddress()
-    {
-        return $this->emailAddress;
-    }
-
-    /**
      * Set phoneNumber
      *
      * @param string $phoneNumber
@@ -257,6 +208,30 @@ class UserProfile
     }
 
     /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return UserProfile
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Set address
      *
      * @param string $address
@@ -302,29 +277,5 @@ class UserProfile
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set userId
-     *
-     * @param \AppBundle\Entity\User $userId
-     *
-     * @return UserProfile
-     */
-    public function setUserId(\AppBundle\Entity\User $userId = null)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUserId()
-    {
-        return $this->userId;
     }
 }

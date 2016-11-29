@@ -89,32 +89,52 @@ class UserController extends Controller
     public function userProfileAction(Request $request)
     {
         $userId = $this->getUser()->getId();
+        $user = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:User');
+
+        $user->find($userId);
+
         $em = $this->getDoctrine()->getManager();
 
         $profile = $em->getRepository('AppBundle:UserProfile')
-            ->find($userId);
+            ->findOneBy(['user' => $userId]);
 
-        if (is_null($profile)){
-            $newProfile = new UserProfile();
 
-            $em->persist($newProfile);
-            $em->flush();
-        }
-
-        $form = $this->createForm(UserProfileType::class, $profile);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
+        if (is_null($profile)) {
+            $profile = new UserProfile();
+            $profile->setUser($em->getRepository('AppBundle:User')->find($userId));
+            $profile->setFirstName(null);
+            $profile->setLastName(null);
+            $profile->setDateOfBirth(null);
+            $profile->setEmail(null);
+            $profile->setPhoneNumber(null);
+            $profile->setMobileNumber(null);
+            $profile->setAddress(null);
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
+            $em->persist($profile);
             $em->flush();
 
-            return $this->redirect('/user');
+            return $this->redirect('/user/profile');
+
+        }else{
+            $form = $this->createForm(UserProfileType::class, $profile);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()){
+                $data = $form->getData();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($data);
+                $em->flush();
+
+                return $this->redirect('/user');
+            }
         }
+
         return $this->render('admin/user/profile.html.twig',[
             'form' => $form->createView()
         ]);
+
     }
 }
