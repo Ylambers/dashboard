@@ -67,6 +67,7 @@ class UserController extends Controller
      * @Route("user/fos/register", name="registration")
      */
     public function registerUserAction()
+        //TODO fix registration user
     {
         return $this->render('admin/user/registrationUser.html.twig',[]);
     }
@@ -79,8 +80,6 @@ class UserController extends Controller
     {
         //TODO fix create user action
         $user = new User();
-
-
     }
 
     /**
@@ -135,6 +134,19 @@ class UserController extends Controller
         return $this->render('admin/user/profile.html.twig',[
             'form' => $form->createView()
         ]);
+    }
 
+    /**
+     * @Route("user/details/{id}", name="userdetails")
+     */
+    public function allUserDetailsAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('AppBundle:UserProfile');
+        $profile = $repository->findOneBy(['user' => $id]);
+
+        return $this->render('admin/user/details.html.twig',[
+            'user' => $profile
+        ]);
     }
 }

@@ -11,6 +11,7 @@
                 <th>Enabled</th>
                 <th>Last login</th>
                 <th>Role</th>
+                <th>Person details</th>
                 <th>Edit</th>
             </tr>
             </thead>
@@ -26,6 +27,9 @@
                         {% endif %}
                         <td>{{ item.lastLogin|date("d/m/Y:H:I:s") }}</td>
                         <td>{{ item.roles|join(', ') }}</td>
+                        <td>
+                            <a class="btn btn-default" href="/user/details/{{ item.id }}" role="button">View</a>
+                        </td>
                         <td>
                             <a class="btn btn-default" href="/user/fos/edit/{{ item.id }}" role="button">Edit</a>
                         </td>

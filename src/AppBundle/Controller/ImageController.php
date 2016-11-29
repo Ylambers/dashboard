@@ -75,7 +75,6 @@ class ImageController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('AppBundle:Image');
-
         $image = $repository->findOneBy(['id' => $id]);
         $em->remove($image);
         $em->flush();
