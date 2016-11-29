@@ -26,23 +26,23 @@
                     <ul>
                         <a href="{{ path('category') }}">Category</a>
                         <a href="{{ path('item_create') }}">Item</a>
-                        <a href="/user/slider">Slider</a>
+                        <a href="{{ path('slider') }}">Slider</a>
                         <a href="{{ path('image_upload') }}">Image upload</a>
                         <a href="{{ path('image_view') }}">Image view</a>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#">Users</a>
+                    <a href="{{ path('user') }}">Users</a>
                     <ul>
-                        <a href="/user/fos/register">Create user</a>
+                        {#<a href="{{ path('user_create') }}">Create user</a>#}
 
-                        <a href="/user/fos/show">Show users</a>
-                        <a href="{{ path('fos_user_resetting_request') }}">Forgot password</a>
+                        <a href="{{ path('user') }}">Show users</a>
+                        {#<a href="{{ path('fos_user_resetting_request') }}">Forgot password</a>#}
                     </ul>
                 </li>
-                <li><a href="/user/profile">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="{{ path('user_profile') }}">Profile</a></li>
+                <li><a href="{{ path('logout') }}">Logout</a></li>
 
             </ul>
         </nav>

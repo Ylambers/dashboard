@@ -10,9 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SliderController extends Controller
 {
-    /**
-     * @Route("/user/slider", name="slider")
-     */
     public function AddSliderAction(Request $request)
     {
         $data = $this->getDoctrine()->getManager()
@@ -41,9 +38,6 @@ class SliderController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/user/slider/edit/{id}", name="sliderEdit")
-     */
     public function EditSliderAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -79,7 +73,7 @@ class SliderController extends Controller
     /**
      * @Route("/user/slider/delete/{id}", name="delete_slider")
      */
-    public function deleteImageAction($id)
+    public function deleteSliderAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('AppBundle:Slider');

@@ -17,9 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
 
-    /**
-     * @Route("user/fos/show", name="showUser")
-     */
     public function showUsersAction()
     {
         $user = $this->getDoctrine()->getManager()
@@ -31,9 +28,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * @Route("user/fos/edit/{id}", name="editUser")
-     */
     public function editUserAction($id, Request $request)
     {
         //TODO Fix change password
@@ -82,9 +76,6 @@ class UserController extends Controller
         $user = new User();
     }
 
-    /**
-     * @Route("user/profile", name="profile")
-     */
     public function userProfileAction(Request $request)
     {
         $userId = $this->getUser()->getId();
@@ -139,9 +130,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * @Route("user/details/{id}", name="userdetails")
-     */
+
     public function allUserDetailsAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();

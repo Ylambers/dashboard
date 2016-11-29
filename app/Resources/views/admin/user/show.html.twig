@@ -29,13 +29,13 @@
                         <td>{{ item.lastLogin|date("d/m/Y:H:I:s") }}</td>
                         <td>{{ item.roles|join(', ') }}</td>
                         <td>
-                            <a class="btn btn-default" href="/user/details/{{ item.id }}" role="button">View</a>
+                            <a class="btn btn-default" href="{{ path('user_all_details', {'id': item.id}) }}" role="button">View</a>
                         </td>
                         <td>
-                            <a class="btn btn-default" href="/user/fos/edit/{{ item.id }}" role="button">Edit</a>
+                            <a class="btn btn-default" href="{{ path('user_edit', {'id': item.id}) }}" role="button">Edit</a>
                         </td>
                         <td>
-                            <a class="btn btn-default" href="/user/fos/edit/{{ item.id }}" role="button">Reset</a>
+                            <a class="btn btn-default" href="{{ path('user_password_reset', {'id': item.id}) }}" role="button">Reset</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -20,13 +20,10 @@
             <img src="{{ asset('uploads/images/' ~ slider.image.image) }}" width="100px" /> <br /> <br />
 
 
-            <a class="btn btn-default" href="/user/slider/edit/{{ slider.id }}" role="button">Edit</a>
-            <a class="btn btn-danger" href="/user/slider/delete/{{ slider.id }}" role="button">Delete</a>
+            <a class="btn btn-default" href="{{ path('slider_edit', {'id': slider.id}) }}" role="button">Edit</a>
+            <a class="btn btn-danger" href="{{ path('slider_delete', {'id': slider.id}) }}" role="button">Delete</a>
 
 
         {% endfor %}
     </div>
-
-
-
 {% endblock %}
