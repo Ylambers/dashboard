@@ -18,9 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * @Route("/user/category", name="category")
-     */
+
     public function createCategoryAction(Request $request)
     {
         $cat = new Category();
@@ -47,9 +45,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/user/category/delete/{id}", name="delete_category")
-     */
+
     public function deleteCategoryAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -62,9 +58,6 @@ class CategoryController extends Controller
         return $this->redirect('/user/category');
     }
 
-    /**
-     * @Route("/user/category/edit/{id}", name="edit_category")
-     */
     public function editCategoryAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();

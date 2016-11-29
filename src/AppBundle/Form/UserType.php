@@ -32,16 +32,6 @@ class UserType extends AbstractType
             ->add('username', TextType::class,[
             ])
             ->add('email', TextType::class,[])
-
-            ->add('plainPassword',          RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat password'),
-                'invalid_message' => 'fos_user.password.mismatch',
-                'required' => false
-            ))
-
             ->add(
                 'roles', ChoiceType::class, [
                     'choices' => ['User' => 'ROLE_USER', 'Super admin' => 'ROLE_SUPER_ADMIN'],
@@ -53,5 +43,3 @@ class UserType extends AbstractType
             ->getForm();
     }
 }
-
-//'Admin' => 'ROLE_ADMIN',

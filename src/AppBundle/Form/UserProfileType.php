@@ -37,9 +37,6 @@ class UserProfileType extends AbstractType
                 'months' => range(1, $month),
                 'days' => range(1, $day)
             ))
-            ->add('email', TextType::class, [
-                'required' => false
-            ])
             ->add('phoneNumber', TextType::class, [
                 'required' => false
             ])

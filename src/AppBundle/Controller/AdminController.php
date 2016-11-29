@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
-    /**
-     * @Route("/user", name="admin")
-     */
+
     public function indexAction()
     {
         $user = $this->getUser();

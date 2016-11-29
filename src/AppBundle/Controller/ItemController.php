@@ -15,10 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ItemController extends Controller
 {
-
-    /**
-     * @Route("/user/item", name="item")
-     */
     public function createItemAction(Request $request)
     {
         $item = new Item();
@@ -47,9 +43,7 @@ class ItemController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/user/item/edit/{id}")
-     */
+
     public function editItemAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -81,10 +75,7 @@ class ItemController extends Controller
             'form' => $form->createView()
         ]);
     }
-
-    /**
-     * @Route("/user/item/delete/{id}", name="delete_item")
-     */
+    
     public function deleteImageAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();

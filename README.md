@@ -134,12 +134,53 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+admin:
+    path:     /user
+    defaults: { _controller: AppBundle:Admin:index }
+
+category:
+    path:     /user/category
+    defaults: { _controller: AppBundle:Category:createCategory }
+
+category_delete:
+    path: /user/category/delete/{id}
+    defaults: { _controller: AppBundle:Category:deleteCategory }
+
+category_edit:
+    path: /user/category/edit/{id}
+    defaults: { _controller: AppBundle:Category:editCategory }
+
+image_view:
+    path:     /user/image/show
+    defaults: { _controller: AppBundle:Image:showImage }
+
+image_upload:
+    path:     /user/image/upload
+    defaults: { _controller: AppBundle:Image:addImage }
+
+image_edit:
+    path:     /user/image/edit/{id}
+    defaults: { _controller: AppBundle:Image:editImage }
+
+image_delete:
+    path:     /user/image/delete/{id}
+    defaults: { _controller: AppBundle:Image:deleteImage }
+
+
+item_create:
+    path:     /user/item
+    defaults: { _controller: AppBundle:Item:createItem }
+
+item_edit:
+    path:     /user/item/edit/{id}
+    defaults: { _controller: AppBundle:Item:editItem }
+
+item_delete:
+    path:     /user/item/delete/{id}
+    defaults: { _controller: AppBundle:Item:deleteImage }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /user/profile
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
@@ -148,6 +189,8 @@ fos_user_register:
 register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix: /registration
+    
+    
 ```
 
 ## Install the assets bundle 

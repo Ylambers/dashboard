@@ -148,6 +148,10 @@ class UserController extends Controller
         $repository = $em->getRepository('AppBundle:UserProfile');
         $profile = $repository->findOneBy(['user' => $id]);
 
+        if (is_null($profile)){
+            return $this->redirect('/user/fos/show');
+        }
+
         return $this->render('admin/user/details.html.twig',[
             'user' => $profile
         ]);

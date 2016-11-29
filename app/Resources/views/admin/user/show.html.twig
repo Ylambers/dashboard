@@ -13,6 +13,7 @@
                 <th>Role</th>
                 <th>Person details</th>
                 <th>Edit</th>
+                <th>Reset password</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,9 @@
                         </td>
                         <td>
                             <a class="btn btn-default" href="/user/fos/edit/{{ item.id }}" role="button">Edit</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-default" href="/user/fos/edit/{{ item.id }}" role="button">Reset</a>
                         </td>
                     </tr>
                 {% endfor %}

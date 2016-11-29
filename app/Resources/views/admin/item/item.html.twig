@@ -32,8 +32,8 @@
                         <br />
                         <br />
 
-                        <a class="btn btn-default" href="/user/item/edit/{{ item.id }}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="/user/item/delete/{{ item.id }}" role="button">Delete</a>
+                        <a class="btn btn-default" href="{{ path('item_edit', {'id': item.id}) }}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{{ path('item_delete', {'id': item.id}) }}" role="button">Delete</a>
                     {% endfor %}
                 {% endautoescape %}
             </div>

@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ImageController extends Controller
 {
-    /**
-     * @Route("/user/image/upload", name="image")
-     */
     public function addImageAction(Request $request)
     {
         $image = new Image();
@@ -53,10 +50,6 @@ class ImageController extends Controller
         ]);
     }
 
-
-    /**
-     * @Route("/user/image/show", name="show")
-     */
     public function showImageAction()
     {
         $data = $this->getDoctrine()->getManager()
@@ -68,9 +61,6 @@ class ImageController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/user/image/delete/{id}", name="delete_image")
-     */
     public function deleteImageAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -82,9 +72,7 @@ class ImageController extends Controller
         return $this->redirect('/user/image/show');
     }
 
-    /**
-     * @Route("/user/image/edit/{id}", name="edit_image")
-     */
+
     public function editImageAction($id, Request $request)
     {
         //TODO fix edit page
