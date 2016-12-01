@@ -1,0 +1,39 @@
+{% extends 'admin/index.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Item</h1>
+
+            </div>
+
+            <div class="col-md-6 scroll-container">
+                {% autoescape %}
+                    {% for item in data %}
+                        <h2>{{ item.category.name }}</h2>
+                        <hr />
+                        {{ item.Title }} <br />
+                        {{ item.shortText }} <br />
+                        {{ item.text|raw }} <br />
+                        {{ item.link }} <br />
+                        {% if item.active is null %}
+                            <strong>Not active</strong> <br />
+                        {% else %}
+                            <strong>Active</strong> <br />
+                        {% endif %}
+                        {% if item.image.image is not empty %}
+                            <img src="{{ asset('uploads/images/' ~ item.image.image) }}" width="100px" />
+                        {% endif %}
+                        <br />
+                        <br />
+
+                        <a class="btn btn-default" href="{{ path('item_edit', {'id': item.id}) }}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{{ path('item_delete', {'id': item.id}) }}" role="button">Delete</a>
+                    {% endfor %}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
