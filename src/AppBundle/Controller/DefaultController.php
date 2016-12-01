@@ -9,11 +9,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
     public function indexAction(Request $request)
     {
-        return $this->redirect('/admin');
+        return $this->redirect('/login');
     }
+
+    public function homeAction()
+    {
+//        $service = $this->forward('general_service:profileCheck');
+////
+//        var_dump($service());
+//
+//        if (is_null($service())) {
+//            return $this->redirect('/user/profile');
+//        }
+
+        return $this->render('admin/content.html.twig');
+    }
+
 }

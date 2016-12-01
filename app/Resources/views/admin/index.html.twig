@@ -21,7 +21,7 @@
     <div class="menu">
         <nav id="primary_nav_wrap">
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="#">Content</a>
                     <ul>
                         <a href="{{ path('category') }}">Category</a>
@@ -31,6 +31,12 @@
                         <a href="{{ path('image_view') }}">Image view</a>
                     </ul>
                 </li>
+
+                <li><a href="#">Cursussen</a>
+                    <ul>
+                        <a href="{{ path('cursus_create') }}">cursus create</a>
+                        <a href="{{ path('cursus_type_create') }}">cursus type create</a>
+                    </ul>
 
                 <li>
                     <a href="{{ path('user') }}">Users</a>

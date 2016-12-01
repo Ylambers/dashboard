@@ -26,10 +26,8 @@ class UserProfileType extends AbstractType
 
         $builder
             ->add('firstName', TextType::class, [
-                'required' => false
             ])
             ->add('lastName', TextType::class, [
-                'required' => false
             ])
             ->add('dateOfBirth', DateType::class, array(
                 'widget' => 'choice',

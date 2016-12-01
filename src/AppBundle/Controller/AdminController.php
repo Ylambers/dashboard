@@ -19,9 +19,26 @@ class AdminController extends Controller
 
     public function indexAction()
     {
-        $user = $this->getUser();
+
+        $userId = $this->getUser()->getId();
+        $user = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:User');
+
+        $user->find($userId);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $profile = $em->getRepository('AppBundle:UserProfile')
+            ->findOneBy(['user' => $userId]);
+
+        if (is_null($profile)) {
+            return $this->redirect('/user/profile');
+        }
+
+
         return $this->render('admin/content.html.twig', [
-            'user' => $user
+//            'user' => $user
         ]);
     }
+
 }
