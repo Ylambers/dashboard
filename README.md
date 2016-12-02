@@ -129,103 +129,119 @@ parameters:
 ```
 * app/config/routing.yml
 ```
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
-
-admin:
-    path:     /admin
-    defaults: { _controller: AppBundle:Admin:index }
-
-user:
-    path:     /admin/fos/show
-    defaults: { _controller: AppBundle:User:showUsers }
-#user_create:
-#    path:     /admin/fos/show
-#    defaults: { _controller: AppBundle:User:showUsers }
-
-user_edit:
-    path:     /admin/fos/edit/{id}
-    defaults: { _controller: AppBundle:User:editUser }
-
-user_profile:
-    path:     admin/profile
-    defaults: { _controller: AppBundle:User:userProfile }
-
-user_all_details:
-    path:     admin/details/{id}
-    defaults: { _controller: AppBundle:User:allUserDetails }
-
-user_password_reset:
-    path:     admin/details/{id}
-    defaults: { _controller: AppBundle:User:userPasswordReset }
-
-category:
-    path:     /admin/category
-    defaults: { _controller: AppBundle:Category:createCategory }
-
-category_delete:
-    path: /admin/category/delete/{id}
-    defaults: { _controller: AppBundle:Category:deleteCategory }
-
-category_edit:
-    path: /admin/category/edit/{id}
-    defaults: { _controller: AppBundle:Category:editCategory }
-
-image_view:
-    path:     /admin/image/show
-    defaults: { _controller: AppBundle:Image:showImage }
-
-image_upload:
-    path:     /admin/image/upload
-    defaults: { _controller: AppBundle:Image:addImage }
-
-image_edit:
-    path:     /admin/image/edit/{id}
-    defaults: { _controller: AppBundle:Image:editImage }
-
-image_delete:
-    path:     /admin/image/delete/{id}
-    defaults: { _controller: AppBundle:Image:deleteImage }
-
-item_create:
-    path:     /admin/item
-    defaults: { _controller: AppBundle:Item:createItem }
-
-item_edit:
-    path:     /admin/item/edit/{id}
-    defaults: { _controller: AppBundle:Item:editItem }
-
-item_delete:
-    path:     /admin/item/delete/{id}
-    defaults: { _controller: AppBundle:Item:deleteImage }
-
-slider:
-    path:     /admin/slider
-    defaults: { _controller: AppBundle:Slider:addSlider }
-
-slider_edit:
-    path:     /admin/slider/edit/{id}
-    defaults: { _controller: AppBundle:Slider:editSlider }
-
-slider_delete:
-    path:     /admin/slider/delete/{id}
-    defaults: { _controller: AppBundle:Slider:deleteSlider }
-
-logout:
-    path: /logout
-
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /user/fos/registration
-
-register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /registration    
+ app:
+     resource: "@AppBundle/Controller/"
+     type:     annotation
+ 
+ cursus_create:
+     path:     /admin/cursus
+     defaults: { _controller: AppBundle:Cursussen:cursus }
+ 
+ cursus_type_create:
+     path:     /admin/cursusType
+     defaults: { _controller: AppBundle:Cursussen:cursusType }
+ 
+ home:
+     path:     /user
+     defaults: { _controller: AppBundle:Default:home }
+ 
+ admin:
+     path:     /admin
+     defaults: { _controller: AppBundle:Admin:index }
+ 
+ user:
+     path:     /admin/fos/show
+     defaults: { _controller: AppBundle:User:showUsers }
+ #user_create:
+ #    path:     /admin/fos/show
+ #    defaults: { _controller: AppBundle:User:showUsers }
+ 
+ user_edit:
+     path:     /admin/fos/edit/{id}
+     defaults: { _controller: AppBundle:User:editUser }
+ 
+ user_profile:
+     path:     user/profile
+     defaults: { _controller: AppBundle:User:userProfile }
+ 
+ user_all_details:
+     path:     admin/details/{id}
+     defaults: { _controller: AppBundle:User:allUserDetails }
+ 
+ user_password_reset:
+     path:     admin/details/{id}
+     defaults: { _controller: AppBundle:User:userPasswordReset }
+ 
+ category:
+     path:     /admin/category
+     defaults: { _controller: AppBundle:Category:createCategory }
+ 
+ category_delete:
+     path: /admin/category/delete/{id}
+     defaults: { _controller: AppBundle:Category:deleteCategory }
+ 
+ category_edit:
+     path: /admin/category/edit/{id}
+     defaults: { _controller: AppBundle:Category:editCategory }
+ 
+ image_view:
+     path:     /admin/image/show
+     defaults: { _controller: AppBundle:Image:showImage }
+ 
+ image_upload:
+     path:     /admin/image/upload
+     defaults: { _controller: AppBundle:Image:addImage }
+ 
+ image_edit:
+     path:     /admin/image/edit/{id}
+     defaults: { _controller: AppBundle:Image:editImage }
+ 
+ image_delete:
+     path:     /admin/image/delete/{id}
+     defaults: { _controller: AppBundle:Image:deleteImage }
+ 
+ item_create:
+     path:     /admin/item
+     defaults: { _controller: AppBundle:Item:createItem }
+ 
+ item_edit:
+     path:     /admin/item/edit/{id}
+     defaults: { _controller: AppBundle:Item:editItem }
+ 
+ item_delete:
+     path:     /admin/item/delete/{id}
+     defaults: { _controller: AppBundle:Item:deleteImage }
+ 
+ slider:
+     path:     /admin/slider
+     defaults: { _controller: AppBundle:Slider:addSlider }
+ 
+ slider_edit:
+     path:     /admin/slider/edit/{id}
+     defaults: { _controller: AppBundle:Slider:editSlider }
+ 
+ slider_delete:
+     path:     /admin/slider/delete/{id}
+     defaults: { _controller: AppBundle:Slider:deleteSlider }
+ 
+ logout:
+     path: /logout
+ 
+ 
+ _errors:
+     resource: "@TwigBundle/Resources/config/routing/errors.xml"
+     prefix:   /_error
+ 
+ fos_user:
+     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+ 
+ fos_user_register:
+     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+     prefix: /user/fos/registration
+ 
+ register:
+     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+     prefix: /registration
     
 ```
 
@@ -289,6 +305,14 @@ https://github.com/stfalcon/TinymceBundle
             )
         ));
     ```
+    
+    
+#add service controller
+    ```
+    services:
+        general_service:
+            class: AppBundle\Controller\ServiceController
+        ```
 
 ##Todo
 
