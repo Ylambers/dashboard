@@ -1,0 +1,72 @@
+/*
+
+    Css fixed / font adding
+
+*/
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*
+
+    Menu bar and menu
+
+ */
+
+#menu-container{
+    width: 100%;
+    height: 60px;
+    background: rgb(24,23,23);
+    border-bottom: 5px solid #00CC00;
+}
+
+#menu-container ul li{
+    display: inline-block;
+    margin: 70px 20px;
+}
+
+#menu-container ul li a{
+    text-decoration: none;
+    color: #00CC00;
+}
+
+
+#menu-container .menu-img{
+    background: #fff;
+    position: absolute;
+    right: 0;
+    border: 5px solid #00CC00;
+    border-radius: 15px;
+    padding: 15px;
+    width: 15%;
+    margin: -130px 15%;
+}
+
+
+
+/*
+
+    Slicknav menu
+
+*/
+
+.slicknav_menu {
+    display:none;
+}
+
+@media screen and (max-width: 40em) {
+    /* #menu is the original menu */
+    .js #menu {
+        display:none;
+    }
+
+    .js .slicknav_menu {
+        display:block;
+    }
+}

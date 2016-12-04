@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Richard JF{% endblock %}</title>
+
+    {% stylesheets
+    'bundles/framework/css/bootstrap.css' filter='cssrewrite'
+    'bundles/css/default/index.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {% block javascripts %}
+        {% javascripts
+            'bundles/js/jquery-3.1.1.js'
+            'bundles/js/jquery.slicknav'
+            'bundles/js/gulpfile'
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block menu %}
+    <section class="container" id="menu-container">
+        <ul id="menu">
+            <li><a href="#electra">Elektra</a></li>
+            <li><a href="#data">Data</a></li>
+            <li><a href="#Domotica">Domotica</a></li>
+            <li><a href="#camera">Camera-beveliging</a></li>
+        </ul>
+
+        {% image 'bundles/img/logo-faijer.png' %}
+            <img class="menu-img" src="{{ asset_url }}" alt="Example" />
+        {% endimage %}
+
+    </section>
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+
+
+{% block content %}{% endblock %}
+
+
+
+
+
+</body>
 </html>

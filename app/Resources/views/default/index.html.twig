@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for content in electra  %}
-        <li>{{ content.category.name }}</li>
-        <li>{{ content.title }}</li>
-        <li>{{ content.shortText}}</li>
-        <li>{{ content.text }}</li>
-        <li>{{ content.link }}</li>
-    {% endfor %}
+
 {% endblock %}
 
+{% block custom_scripts %}
+    <script>
+        $('#menu-container').slicknav({
+            label: '',
+            duration: 1000,
+            easingOpen: "easeOutBounce", //available with jQuery UI
+            prependTo:'#menu-container'
+        });
+    </script>
+{% endblock %}

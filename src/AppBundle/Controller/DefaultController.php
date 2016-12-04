@@ -11,20 +11,11 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-//        return $this->redirect('/login');
+        return $this->render('default/index.html.twig');
     }
 
     public function homeAction()
     {
-//        $service = $this->forward('general_service:profileCheck');
-////
-//        var_dump($service());
-//
-//        if (is_null($service())) {
-//            return $this->redirect('/user/profile');
-//        }
-
         return $this->render('admin/content.html.twig');
     }
-
 }
