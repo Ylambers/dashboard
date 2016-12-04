@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Cursus
  *
  * @ORM\Table(name="cursus")
- * @ORM\Entity(repositoryClass="CursusBundle\Repository\CursusRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CursusRepository")
  */
 class Cursus
 {
@@ -141,11 +141,11 @@ class Cursus
     /**
      * Set cursusType
      *
-     * @param \CursusBundle\Entity\CursusType $cursusType
+     * @param \AppBundle\Entity\CursusType $cursusType
      *
      * @return Cursus
      */
-    public function setCursusType(\CursusBundle\Entity\CursusType $cursusType = null)
+    public function setCursusType(\AppBundle\Entity\CursusType $cursusType = null)
     {
         $this->cursusType = $cursusType;
 

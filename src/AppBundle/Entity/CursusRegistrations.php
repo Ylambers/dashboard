@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CursusRegistrations
  *
  * @ORM\Table(name="cursus_registrations")
- * @ORM\Entity(repositoryClass="CursusBundle\Repository\CursusRegistrationsRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CursusRegistrationsRepository")
  */
 class CursusRegistrations
 {
@@ -49,11 +49,11 @@ class CursusRegistrations
     /**
      * Set cursus
      *
-     * @param \CursusBundle\Entity\cursus $cursus
+     * @param \AppBundle\Entity\cursus $cursus
      *
      * @return CursusRegistrations
      */
-    public function setCursus(\CursusBundle\Entity\cursus $cursus = null)
+    public function setCursus(\AppBundle\Entity\cursus $cursus = null)
     {
         $this->cursus = $cursus;
 
@@ -63,7 +63,7 @@ class CursusRegistrations
     /**
      * Get cursus
      *
-     * @return \CursusBundle\Entity\cursus
+     * @return \AppBundle\Entity\cursus
      */
     public function getCursus()
     {
@@ -73,11 +73,11 @@ class CursusRegistrations
     /**
      * Set user
      *
-     * @param \CursusBundle\Entity\User $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return CursusRegistrations
      */
-    public function setUser(\CursusBundle\Entity\User $user = null)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -87,7 +87,7 @@ class CursusRegistrations
     /**
      * Get user
      *
-     * @return \CursusBundle\Entity\User
+     * @return \AppBundle\Entity\User
      */
     public function getUser()
     {
