@@ -24,12 +24,12 @@ class SchipType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('averij', ChoiceType::class, [
-                    'choices' => ['Ja' => '1'],
-                    'expanded' => true,
-                    'multiple' => true,
-                ]
-            )
+//            ->add('averij', ChoiceType::class, [
+//                    'choices' => ['Ja' => '1', 'Nee' => '0'],
+//                    'expanded' => true,
+//                    'multiple' => true,
+//                ]
+//            )
             ->add('capaciteit', IntegerType::class)
             ->add('Submit', SubmitType::class)
             ->getForm();

@@ -26,6 +26,11 @@ class CursusTType extends AbstractType
             ->add('beschrijving', TextType::class)
             ->add('prijs', IntegerType::class)
             ->add('boten', IntegerType::class)
+            ->add('schip', EntityType::class, [
+                'class' => 'AppBundle:Schip',
+                'choice_label' => function ($category) {
+                    return $category->getName();
+                }])
             ->add('Submit', SubmitType::class)
             ->getForm();
     }

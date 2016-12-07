@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Schip
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="CursusType", mappedBy="CursusType")
+     */
+    private $cursusType;
+
     /**
      * @var int
      *
@@ -123,5 +129,94 @@ class Schip
     public function getCapaciteit()
     {
         return $this->capaciteit;
+    }
+
+    /**
+     * Set cursusType
+     *
+     * @param \AppBundle\Entity\CursusType $cursusType
+     *
+     * @return Schip
+     */
+    public function setCursusType(\AppBundle\Entity\CursusType $cursusType = null)
+    {
+        $this->cursusType = $cursusType;
+
+        return $this;
+    }
+
+    /**
+     * Get cursusType
+     *
+     * @return \AppBundle\Entity\CursusType
+     */
+    public function getCursusType()
+    {
+        return $this->cursusType;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->schip = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add schip
+     *
+     * @param \AppBundle\Entity\Schip $schip
+     *
+     * @return Schip
+     */
+    public function addSchip(\AppBundle\Entity\Schip $schip)
+    {
+        $this->schip[] = $schip;
+
+        return $this;
+    }
+
+    /**
+     * Remove schip
+     *
+     * @param \AppBundle\Entity\Schip $schip
+     */
+    public function removeSchip(\AppBundle\Entity\Schip $schip)
+    {
+        $this->schip->removeElement($schip);
+    }
+
+    /**
+     * Get schip
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSchip()
+    {
+        return $this->schip;
+    }
+
+    /**
+     * Add cursusType
+     *
+     * @param \AppBundle\Entity\CursusType $cursusType
+     *
+     * @return Schip
+     */
+    public function addCursusType(\AppBundle\Entity\CursusType $cursusType)
+    {
+        $this->cursusType[] = $cursusType;
+
+        return $this;
+    }
+
+    /**
+     * Remove cursusType
+     *
+     * @param \AppBundle\Entity\CursusType $cursusType
+     */
+    public function removeCursusType(\AppBundle\Entity\CursusType $cursusType)
+    {
+        $this->cursusType->removeElement($cursusType);
     }
 }

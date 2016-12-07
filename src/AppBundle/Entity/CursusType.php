@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CursusType
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Schip", inversedBy="schip")
+     * @ORM\JoinColumn(name="schip_id", referencedColumnName="id")
+     */
+    private $schip;
+
     /**
      * @ORM\OneToMany(targetEntity="Cursus", mappedBy="cursustype")
      */
@@ -200,5 +207,53 @@ class CursusType
     public function getCursus()
     {
         return $this->cursus;
+    }
+
+    /**
+     * Add schip
+     *
+     * @param \AppBundle\Entity\Schip $schip
+     *
+     * @return CursusType
+     */
+    public function addSchip(\AppBundle\Entity\Schip $schip)
+    {
+        $this->schip[] = $schip;
+
+        return $this;
+    }
+
+    /**
+     * Remove schip
+     *
+     * @param \AppBundle\Entity\Schip $schip
+     */
+    public function removeSchip(\AppBundle\Entity\Schip $schip)
+    {
+        $this->schip->removeElement($schip);
+    }
+
+    /**
+     * Get schip
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSchip()
+    {
+        return $this->schip;
+    }
+
+    /**
+     * Set schip
+     *
+     * @param \AppBundle\Entity\Schip $schip
+     *
+     * @return CursusType
+     */
+    public function setSchip(\AppBundle\Entity\Schip $schip = null)
+    {
+        $this->schip = $schip;
+
+        return $this;
     }
 }
