@@ -17,25 +17,15 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class CursusType extends AbstractType
+class CursusTType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cursusType', EntityType::class, array(
-                'class' => 'AppBundle:CursusType',
-                'choice_label' => function ($type) {
-                    return $type->getTitle();
-                }))
-            ->add('naam', TextType::class)
+            ->add('title', TextType::class)
             ->add('beschrijving', TextType::class)
-            ->add('personen', IntegerType::class)
-            ->add('datum', DateType::class, array(
-                'widget' => 'choice',
-                'years' => range(2016, 2020 ),
-                'months' => range(1,12),
-                'days' => range(1, 31)
-            ))
+            ->add('prijs', IntegerType::class)
+            ->add('boten', IntegerType::class)
             ->add('Submit', SubmitType::class)
             ->getForm();
     }
