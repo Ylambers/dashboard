@@ -1,5 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<body>
+
+
     <div class="container" id="login">
         <form action="{{ path("fos_user_security_check") }}" method="post">
             {% if csrf_token %}
