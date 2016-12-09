@@ -28,6 +28,8 @@ class CursussenController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($data);
             $em->flush();
+
+            return $this->redirect('/admin');
         }
 
         return $this->render('admin/cursus/cursus.html.twig', [
@@ -77,5 +79,10 @@ class CursussenController extends Controller
         return $this->render('admin/cursus/schip.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    public function cursusViewAction()
+    {
+        
     }
 }
